@@ -2,3 +2,59 @@
 .fader {
     opacity: 0.5;
 }
+
+.characters {
+    margin-top: 65px;
+    color: #ffffff;
+}
+
+.gameplay {
+    margin-top: 30px;
+    color: #ffffff;
+}
+
+body {
+    background: url(../images/wallpaper3.jpg);
+    margin-bottom: 160px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.title {
+    /* background-color: rgba(124, 6, 6, 0.6); */
+    background-color: rgba(255, 0, 0, 0.6);
+    color: #ffffff;
+    padding-top: 27px;
+    padding-bottom: 27px;
+}
+
+p, .charName {
+    font-size: 21px;
+}
+
+h1, p, h3 {
+    text-shadow: 2px 5px rgba(92, 3, 3, 0.6);
+}
+
+.herobkg, .enemybkg {
+    background-color: rgba(12, 1, 1, 0.6);
+    padding: 15px;
+    height: 445px;
+}
+
+.stats {
+    text-align: center;
+}
+
+#heroAttack {
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+
+.battlePho {
+    margin-left: auto;
+    margin-right: auto;
+}
