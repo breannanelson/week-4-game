@@ -1,7 +1,8 @@
 
-// array of char objs
-//hp >> health points
+// Creating file path to images
 const PATH = "./assets/images/"
+
+// Array of characters with name, health points (hp) and images.
 var charArr = [
     {
         name: "Baymax",
@@ -60,6 +61,7 @@ function attack() {
     var heroPoint;
     var enemyPoint;
 
+    // Randomly generate hero and enemy points
     heroPoint = Math.floor(Math.random() * 5);
     enemyPoint = Math.floor(Math.random() * 5);
 
@@ -91,7 +93,7 @@ function attack() {
 
 }
 
-// init game function "initialize the game"
+// Function to initialize the game
 function initGame() {
     isHeroChosen = false
     isEnemyChosen = false
@@ -108,13 +110,14 @@ function initGame() {
 }
 
 
-// update health points
+// Update health points
 function updateHealthPoint() {
     for(var i=0; i<charArr.length; i++) {
         charArr[i].hp = 50;
     }
 }
 
+// Update progress bar (color and width)
 function updateProgressBar (chosenHP, val, maxVal) {
     var addStr = " progress-bar progress-bar-striped progress-bar-animated "
     var percentage = Math.floor((val/maxVal)*100) 
@@ -136,14 +139,16 @@ function updateProgressBar (chosenHP, val, maxVal) {
 
 }
 
-// Gets Link for Song
+// Creates new audio element and adds the song as an attribute
 var audioElement = document.createElement("audio");
 audioElement.setAttribute("src", "./assets/audio/immortals.mp3");
 // Plays default music when page is loaded
 audioElement.play();
 
+// Function call to initialize the game
 initGame();
 
+// Waits for user to choose a hero and an enemy and will display the chosen characters
 $(document).on("click", ".char", function () {
     if (!isHeroChosen) {
         //returns the number we need to search for the chosen character in the array
@@ -171,13 +176,18 @@ $(document).on("click", ".char", function () {
 
 var count = 0;
 var wins = 0;
+
+// Waits till user clicks the attack button
 $(document).on("click", "#heroAttack", function () {
-    
+    // Changes text on button from "Ready?" to "Battle!"
     $("#heroAttack").text("Battle!")
     if (count !== 0) {
+        // Calls attack function
         attack();
 
+        // If the hero wins
         if (isHeroAlive && !isEnemyAlive) {
+            // If the hero wins only one game
             if(wins < 1){
                 if((chosenHero.hp + 25) >= 50){
                     chosenHero.hp = 50;
@@ -195,6 +205,7 @@ $(document).on("click", "#heroAttack", function () {
                 $(".enemyCho").removeClass("enemybkg")
                 wins++;
             }
+            // If the hero wins two games
             else{
                 isEnemyChosen = false;
                 isEnemyAlive = true;
@@ -213,6 +224,7 @@ $(document).on("click", "#heroAttack", function () {
                 initGame()
             }
         }
+        // If the hero losses a game
         else if (!isHeroAlive && isEnemyAlive) {
             $(".characters").empty()
             $(".heroCho").empty()
